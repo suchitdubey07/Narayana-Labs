@@ -625,6 +625,322 @@ section {
 }
 
 /* =========================================================================
+   DATASET HIGHLIGHT SECTION
+   ========================================================================= */
+.dataset-highlight {
+    padding: 60px 0;
+}
+
+.dataset-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 48px;
+    background: linear-gradient(135deg, hsla(222, 35%, 15%, 0.4) 0%, hsla(186, 100%, 42%, 0.05) 100%);
+    border-color: hsla(186, 100%, 42%, 0.2);
+}
+
+.dataset-content {
+    flex: 1.2;
+}
+
+.dataset-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.dataset-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+}
+
+.dataset-features {
+    list-style: none;
+    margin-bottom: 32px;
+}
+
+.dataset-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.dataset-features li i {
+    color: var(--accent-tertiary);
+    font-size: 1.2rem;
+}
+
+.dataset-visual {
+    flex: 1;
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.dg-item {
+    background: hsla(222, 40%, 8%, 0.6);
+    border: 1px solid var(--glass-border);
+    padding: 24px 16px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.dg-item i {
+    display: block;
+    font-size: 2rem;
+    color: var(--accent-secondary);
+    margin-bottom: 12px;
+}
+
+.dg-item:hover {
+    background: hsla(186, 100%, 42%, 0.1);
+    border-color: var(--accent-secondary);
+    color: var(--text-primary);
+    transform: translateY(-5px);
+}
+
+/* =========================================================================
+   OPEN RESEARCH PROBLEMS (ORPs)
+   ========================================================================= */
+.orps {
+    padding: 80px 0;
+}
+
+.orp-board {
+    background: var(--bg-surface);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.orp-header {
+    background: hsla(210, 40%, 98%, 0.03);
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--glass-border);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pulse-indicator {
+    width: 8px; height: 8px;
+    background: var(--accent-tertiary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 hsla(150, 95%, 40%, 0.5);
+    animation: pulse 2s infinite;
+}
+
+.orp-item {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid hsla(210, 40%, 98%, 0.05);
+    transition: background 0.2s ease;
+}
+
+.orp-item:last-child {
+    border-bottom: none;
+}
+
+.orp-item:hover {
+    background: hsla(28, 95%, 53%, 0.05);
+}
+
+.orp-status {
+    width: 100px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 12px;
+    border-radius: 100px;
+    text-align: center;
+    margin-right: 24px;
+}
+
+.status-open {
+    background: hsla(150, 95%, 40%, 0.1);
+    color: var(--accent-tertiary);
+    border: 1px solid hsla(150, 95%, 40%, 0.3);
+}
+
+.status-claimed {
+    background: hsla(28, 95%, 53%, 0.1);
+    color: var(--accent-primary);
+    border: 1px solid hsla(28, 95%, 53%, 0.3);
+}
+
+.orp-details {
+    flex: 1;
+}
+
+.orp-details h4 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.orp-details p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.orp-reward {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-secondary);
+    margin-left: 24px;
+    text-align: right;
+}
+
+/* =========================================================================
+   ROADMAP TIMELINE
+   ========================================================================= */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 24px;
+    height: 100%;
+    width: 2px;
+    background: hsla(210, 40%, 98%, 0.1);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 64px;
+    margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 24px; left: 19px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 2px solid var(--text-muted);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.timeline-content.active + .timeline-dot,
+.timeline-item:hover .timeline-dot {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 15px var(--accent-primary);
+}
+
+.timeline-content {
+    padding: 32px;
+    transition: transform 0.3s ease;
+}
+
+.timeline-content.active {
+    border-color: hsla(28, 95%, 53%, 0.4);
+    box-shadow: 0 8px 32px hsla(28, 95%, 53%, 0.1);
+}
+
+.timeline-content:hover {
+    transform: translateX(10px);
+}
+
+.tl-year {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    margin-bottom: 8px;
+    background: hsla(28, 95%, 53%, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.timeline-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+}
+
+/* =========================================================================
+   COMMUNITY HUB
+   ========================================================================= */
+.community-hub {
+    padding: 80px 0;
+}
+
+.social-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.social-card {
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.sc-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 16px;
+    color: var(--text-primary);
+}
+
+.sc-icon.discord { background: #5865F2; }
+.sc-icon.twitter { background: #1DA1F2; }
+.sc-icon.linkedin { background: #0A66C2; }
+.sc-icon.github-sc { background: #333; }
+
+.social-card:hover {
+    transform: translateY(-8px);
+    border-color: hsla(210, 40%, 98%, 0.2);
+}
+
+.social-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.social-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================================
    RESPONSIVE DESIGN
    ========================================================================= */
 @media (max-width: 992px) {
@@ -641,6 +957,12 @@ section {
     
     .features-grid { grid-template-columns: 1fr; }
     .research-grid { grid-template-columns: 1fr; }
+    .dataset-container { flex-direction: column; padding: 40px 24px; }
+    .data-grid { grid-template-columns: repeat(2, 1fr); }
+    .social-cards { grid-template-columns: repeat(2, 1fr); }
+    .orp-item { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .orp-status { margin-right: 0; }
+    .orp-reward { margin-left: 0; text-align: left; margin-top: 8px; }
     
     .stats-bar {
         flex-wrap: wrap;
